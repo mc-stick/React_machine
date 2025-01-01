@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  margin-top: 30%;
+  justify-content: center;
+  animation: textAnimation 2s infinite;
+}
+
+@keyframes textAnimation {
+  0% {
+    
+    color: rgb(251, 0, 255); /* Color inicial */
+  }
+  25% {
+    color: rgb(255, 0, 0); /* Cambio de color */
+  }
+  50% {
+    
+    color: rgb(255, 204, 0); /* Cambio de color */
+  }
+  75% {
+   
+    color: rgb(4, 255, 0); /* Cambio de color */
+  }
+  100% {
+   
+    color: rgb(0, 17, 255); /* Color inicial */
+  }
+}

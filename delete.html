@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botón de Enviar</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .button-container {
+      position: relative;
+    }
+    .send-button {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 1s;
+    }
+    .send-button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      transition: transform 1s, margin-left 1s;
+    }
+    .send-button span {
+      transition: margin-left 1s, opacity 1s;
+    }
+    .send-button.sent {
+      justify-content: center;
+      background-color: white;
+    }
+    .send-button.sent img {
+      
+    
+    animation: moto 2s ease-in-out ;
+    transform: translateX(100px);
+
+}
+
+
+@keyframes moto {
+    0%{
+        transform: translate(2px)  scale(1.2)
+
+    }
+    30%{
+
+        transform: rotate(-45deg) scale(1.5) ;
+    }
+    100%{
+
+        transform:  translate(100px) scale(2) rotate(-95deg);
+    }
+    
+}
+
+    .send-button.sent span {
+      opacity: 0;
+    }
+    .sent-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 1s;
+      color: white;
+      font-size: 16px;
+    }
+    .sent-message.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button class="send-button" onclick="sendOrder()">
+      <img height="20px" src="https://img.icons8.com/water-color/50/motorcycle.png" alt="Moto">
+      <span>Enviar</span>
+    </button>
+    <div style="color: green;" class="sent-message">Se estrello</div>
+  </div>
+  <script>
+    function sendOrder() {
+      const button = document.querySelector('.send-button');
+      const message = document.querySelector('.sent-message');
+      button.classList.add('sent');
+      setTimeout(() => {
+        message.classList.add('visible');
+      }, 2000);
+      setTimeout(() => {
+        message.classList.remove('visible');
+        setTimeout(() => {
+            button.classList.remove('sent');
+        }, 2000);
+        
+      }, 5000);
+      
+    }
+
+    const getUsuarioActivo = (nombre) => (
+      {uid: '123',
+        username:  nombre
+      }
+    )
+
+    console.table(getUsuarioActivo('manuel'))
+  </script>
+</body>
+</html>

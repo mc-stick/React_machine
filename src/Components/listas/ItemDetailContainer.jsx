@@ -1,0 +1,38 @@
+import React, { useEffect, useState } from 'react'
+import { PedirItemId } from '../../helpers/PedirData';
+import ItemDetail from './ItemDetail';
+import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase/Config';
+
+const ItemDetailContainer = () => {
+
+    const [item, setItem]=useState(null);
+
+    const id=useParams().id;
+
+   
+
+    useEffect(() => {
+      
+      const docRef = doc(db, 'producto', id)
+      getDoc(docRef)
+        .then((resp)=>{
+          setItem(
+            {...resp.data(), id: resp.id}
+          )
+        })
+    
+    }, [id])
+    
+
+  return (
+    <div>
+        {item &&
+        <ItemDetail Item={item} />
+        }
+    </div>
+  )
+}
+
+export default ItemDetailContainer
